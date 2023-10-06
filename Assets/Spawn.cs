@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject instanceObject;
+    public float speed;
+    public Vector3 objectPosition = new Vector3(0, 0, 0);
+    public Vector3 pos = new Vector3(0, 0, 0);
+
     void Start()
     {
-        aesfdsñlsjfdas
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
+        pos.y = 0;
+        pos.x = 0;
+        pos.z = 0;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(instanceObject, transform.position, Quaternion.identity);
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            pos.y = 1;
+        }
         
+        if (Input.GetKey(KeyCode.S))
+        {
+            pos.y = -1;
+        }
+
+        transform.Translate(pos * speed * Time.deltaTime);
     }
 }
